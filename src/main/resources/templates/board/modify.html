@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+</head>
+
+<th:block layout:fragment="content">
+    <style>
+        .box_write {
+            position: relative;
+            padding: 150px 150px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .mb-4 {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .btn {
+            font-size: 10px;
+            line-height: 1.6;
+            padding: 4px 15px;
+            border-radius: 50px;
+        }
+
+        .btn-outline-dark {
+            --bs-btn-hover-bg: none;
+            --bs-btn-hover-color: #212529;
+            --bs-btn-active-color: none;
+            --bs-btn-active-bg: none;
+        }
+
+    </style>
+
+    <div class="box_write">
+        <form th:action="@{'/board/update/'+${board.idx}}" method="post">
+            <div class="mb-3">
+                <!--<input type="hidden" name="idx" th:value="${board.idx}"/>-->
+                <label for="exampleFormControlInput1" class="form-label">제목</label>
+                <input type="text" name="title" class="form-control" id="exampleFormControlInput1" th:value="${board.title}">
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">내용</label><br>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="10" th:text="${board.content}"></textarea>
+                <div class="mb-4">
+                    <button type="submit" class="btn btn-outline-dark">수정</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</th:block>
+</html>

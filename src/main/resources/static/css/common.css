@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/*[data-bs-theme=light] {*/
+/*  --bs-theme: #CF5260*/
+/*  !*F94040*!*/
+/*}*/
+
+/*.bg-theme {*/
+/*  --bs-bg-opacity: 1;*/
+/*  background-color: #CF5260;*/
+/*}*/
+
+.feature {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  font-size: 2rem;
+}
+.img-size-contain{
+  object-fit: fill;
+}
+
+.invalid-feedback{
+  color : red;
+}
+
+/* 로그인 카드 부분 */
+.social_login_btn {
+  flex-grow: 1;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+/* 상단 로고 */
+.social_login_btn>img {
+  width: 498.01px;
+  height: 47.25px;
+}
