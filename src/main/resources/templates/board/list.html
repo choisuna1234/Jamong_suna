@@ -48,9 +48,9 @@
 
         th {
             font-family: 'Noto Sans KR', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             border-color: #e5e7eb;
-            padding-left: 30px;
+
         }
 
         td {
@@ -58,7 +58,7 @@
             font-size: 13px;
             border-color: #e5e7eb;
             font-weight: lighter;
-            padding-left: 30px;
+
         }
 
         .box_3 {
@@ -70,10 +70,38 @@
             float: right;
             font-family: 'Noto Sans KR', sans-serif;
         }
+        .search {
+            position: relative;
+            width: 180px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #3d3d3d;
+            padding: 10px 12px;
+            font-size: 12px;
+            height:30px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .pagination {
+            --bs-pagination-color: #3d3d3d;
+            --bs-pagination-border-color: none;
+            --bs-pagination-hover-border-color: none;
+            --bs-pagination-disabled-border-color: none;
+            --bs-pagination-focus-bg: none;
+            --bs-pagination-disabled-bg: none;
+            --bs-pagination-disabled-font: bold;
+            --bs-pagination-disabled-color: #3d3d3d;
+            --bs-pagination-hover-bg: none;
+        }
+        .page-link {
+            color: gray;
+            }
+
     </style>
     <div class="container px-5 my-5 px-5">
     <div class="COMMUNITY">
-        COMMUNITY
+        <a onclick="location.href='/board/list'">COMMUNITY</a>
     </div>
     <hr style="width: 80%; margin: auto; color:#e5e7eb; border-width:2px;">
     <div class="row gx-5 justify-content-center">
@@ -86,22 +114,22 @@
                 Q&A <span th:text="${boards.totalElements}"></span>
             </div>
             <div class="box_4">
-                <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/list}">
-                    <div class="form-group mx-sm-3 mb-2">
-                        <input type="text" class="form-control" id="searchText" name="searchText"
+                <form method="GET" th:action="@{/board/list}">
+                        <div class="search">
+                        <input type="text"  id="searchText" name="searchText" placeholder="search"
                                th:value="${param.searchText}">
-                    </div>
-                    <button type="submit" class="btn btn-outline-dark">검색</button>
+                        </div>
                 </form>
             </div>
+            <br>
             <br>
             <table class="table">
                 <thead>
                 <tr>
-                    <th width="7%">No</th>
+                    <th width="8%" style="align-content:center;">No</th>
                     <th width="70%">제목</th>
                     <th width="10%">작성자</th>
-                    <th width="13%">작성날짜</th>
+                    <th width="12%">작성날짜</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -118,7 +146,8 @@
             </table>
         </div>
     </div>
-    <nav aria-label="Page navigation example">
+        <br>
+
         <ul class="pagination justify-content-center">
             <li class="page-item" th:classappend="${1 == boards.pageable.pageNumber + 1} ? 'disabled'">
                 <a class="page-link" href="#"
@@ -135,7 +164,6 @@
                    th:href="@{/board/list(page=${boards.pageable.pageNumber + 1},searchText=${param.searchText})}">>></a>
             </li>
         </ul>
-    </nav>
     </div>
 </th:block>
 </html>
