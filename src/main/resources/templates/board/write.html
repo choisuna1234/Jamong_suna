@@ -75,6 +75,7 @@
             <br>
             <textarea id="content" rows="10" cols="170" name="content"
                       placeholder="내용을입력해주세요"></textarea>
+            <div id="froala-editor"></div>
         </div>
         <div class="write_Button">
             <button type="submit" class="btn btn-outline-dark">작성</button>
@@ -83,6 +84,15 @@
     </div>
     <script>
         var editor = new FroalaEditor('#content');
+
+        $('div#froala-editor').froalaEditor({
+            imageUploadURL: '/image', // 업로드 처리 end point
+            imageUploadParam: 'file', // 파일 파라메터명
+            imageUploadMethod: 'POST',
+            imageAllowedTypes: ['jpeg', 'jpg', 'png'],
+            imageMaxSize: 2 * 1024 * 1024 // 최대 이미지 사이즈 : 2메가
+        });
+
     </script>
 </th:block>
 </html>
