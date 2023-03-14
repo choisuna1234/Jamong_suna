@@ -20,7 +20,7 @@ import java.util.UUID;
 
 @Service
 public class StorageService {
-    @Value("${upload.path}")
+    @Value("${path}")
     String uploadPath;  // application.yml 에 정의( 업로드 파일이 들어갈 path (ex)/tmp/upload )
 
     /**
