@@ -30,7 +30,7 @@ public class FileController {
         try {
             UploadResult result = storageService.upload(file);
 
-            log.debug("upload result : {}", result);
+            log.debug("upload result :::::::::::::::::::::::::::::: {}", result);
 
             // {"link" : "/image/201905/e98ff4f7-93a3-4aeb-813b-12f20a03db96.jpg"}
             return ImmutableMap.of(
