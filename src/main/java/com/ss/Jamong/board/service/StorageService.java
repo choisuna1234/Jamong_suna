@@ -2,6 +2,7 @@ package com.ss.Jamong.board.service;
 
 import com.ss.Jamong.board.entity.UploadResult;
 import io.micrometer.common.util.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -17,10 +19,10 @@ import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
-
+@Slf4j
 @Service
 public class StorageService {
-    @Value("${path}")
+    @Value("${upload.path}")
     String uploadPath;  // application.yml 에 정의( 업로드 파일이 들어갈 path (ex)/tmp/upload )
 
     /**
@@ -30,7 +32,9 @@ public class StorageService {
      *         name=샘플파일.jpg, size=126495}
      * @throws IOException
      */
-    public UploadResult upload(MultipartFile file) throws IOException {
+    public UploadResult upload(MultipartFile file, HttpServletRequest req) throws IOException {
+        String uploadPath = req.getSession().getServletContext().getRealPath("/").concat("resources");
+        log.info(uploadPath);
         // 년월 별로 업로드 디렉토리 관리
         String path = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 

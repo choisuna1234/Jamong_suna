@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @Slf4j
 @Controller
+@RequestMapping("/image")
 public class FileController {
     @Autowired
     private StorageService storageService;
@@ -23,12 +25,12 @@ public class FileController {
     /**
      * Froala Editor 이미지 업로드
      */
-    @PostMapping("/image")
+    @PostMapping("/upload")
     @ResponseBody
     public Map<String, String> imageUpload(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
-
+        log.info("image upload Controller");
         try {
-            UploadResult result = storageService.upload(file);
+            UploadResult result = storageService.upload(file, request);
 
             log.debug("upload result :::::::::::::::::::::::::::::: {}", result);
 
@@ -38,6 +40,7 @@ public class FileController {
                     String.format("%s/image/%s", request.getContextPath(), result.getPath()));
 
         } catch (Exception ex) {
+            log.info("이미지 업로드에 실패했습니다. 메시지 : {}",ex.getMessage());
             ex.printStackTrace();
 
             return ImmutableMap.of("error", ex.getMessage());

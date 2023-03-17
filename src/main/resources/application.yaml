@@ -50,11 +50,14 @@ spring:
     group:
       "local": "local, jwt, oauth"
     active: local
+
+upload:
+  path: '/src/main/resources/static/image/upload-images'
 ---
 spring:
   config:
     activate:
       on-profile: "local"
-
-  upload:
-    path: '\src\main\resources\static\image'
+#
+#upload:
+#  path: '/src/main/resources/static/image/upload-images'
