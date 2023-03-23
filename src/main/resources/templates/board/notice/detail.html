@@ -45,7 +45,7 @@
             <h2 th:text="${board.title}">제목</h2>
         </div>
         <br>
-        <p th:utext="${board.regDate}"></p>
+        <p th:utext="${board.regDate}"></p><p th:utext="${board.views_hit}"></p>
         <hr style="width: 100%; margin: auto; color:#e5e7eb; border-width:2px;">
         <div class="box_content">
             <p th:utext="${board.content}"></p>

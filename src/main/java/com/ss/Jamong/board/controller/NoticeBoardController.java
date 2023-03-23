@@ -51,8 +51,10 @@ public class NoticeBoardController {
     @GetMapping("/detail/{idx}")
     public String boardNoticeDetail(@PathVariable("idx")Long idx, Model model){
         model.addAttribute("board", noticeBoardService.noticeBoardDetail(idx));
+        noticeBoardService.views_hit(idx);
         return "/board/notice/detail";
     }
+
 
     //게시판 삭제하기
     @GetMapping("/delete/{idx}")
@@ -81,7 +83,6 @@ public class NoticeBoardController {
 
         return "redirect:/board/notice/list";
     }
-
 
 
 }
