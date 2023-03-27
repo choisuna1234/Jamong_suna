@@ -1,0 +1,56 @@
+.contentBox {
+    margin: 100px 100px 50px 130px;
+    font-size: 30px;
+}
+.contentBox input:focus{
+    outline: none;
+}
+textarea {
+    resize: none;
+    border: #ffffff;
+    white-space: pre;
+}
+
+input::placeholder {
+    color: #ced4da;
+}
+
+textarea::placeholder {
+    color: #ced4da;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+input {
+    border: #ffffff;
+}
+
+input:focus {
+    outline: none;
+}
+
+.title2 {
+    font-size: 14px;
+}
+
+.mb-3 {
+    font-size: 14px;
+}
+.form-label {
+    font-size: 14px;
+}
+
+#exampleFormControlInput1 {
+    width: 200px;
+    height: 40px;
+    font-size: 13px;
+    float: left;
+}
+#exampleFormControlInput2{
+    width: 200px;
+    height: 40px;
+    font-size: 13px;
+    display :inline-block;
+}

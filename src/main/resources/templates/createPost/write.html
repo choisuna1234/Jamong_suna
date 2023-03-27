@@ -4,46 +4,11 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 <head>
+    <link th:href="@{/css/createPostWrite.css}" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>프로젝트 만들기</title>
 </head>
 <th:block layout:fragment="content">
-    <style>
-        .contentBox {
-            margin: 100px 100px 50px 130px;
-            font-size: 30px;
-        }
-
-        .box_write {
-        }
-
-        textarea {
-            resize: none;
-            border: #ffffff;
-            white-space: pre;
-        }
-        input::placeholder{
-            color:#ced4da;
-        }
-        textarea::placeholder {
-            color:#ced4da;
-        }
-        textarea:focus {
-            outline: none;
-        }
-
-        input {
-            border: #ffffff;
-        }
-
-        input:focus {
-            outline: none;
-        }
-        .title2{
-            font-size: 14px;
-        }
-
-    </style>
     <div class="contentBox">
         <div class="box_write">
             <div class="form-group">
@@ -54,6 +19,13 @@
                 </div>
             </div>
             <br>
+            <label for="exampleFormControlInput1" class="form-label">프로젝트 기간</label>
+            <div class="mb-3">
+                <input type="ProjectDate" maxlength=100 class="form-control" id="exampleFormControlInput1"
+                       placeholder="입력">&nbsp;&nbsp; ~ &nbsp;&nbsp;
+                <input type="ProjectDate" maxlength=100 class="form-control" id="exampleFormControlInput2"
+                       placeholder="입력">
+            </div>
             <br>
             <textarea id="content" rows="9" cols="150" name="content"
                       placeholder="내용을입력해주세요 "></textarea>
